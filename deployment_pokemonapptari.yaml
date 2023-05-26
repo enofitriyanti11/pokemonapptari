@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pokemonapptari-deployment
+  namespace: development
+  labels:
+    app: pokemonapptari
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: pokemonapptari
+  template:
+    metadata:
+      labels:
+        app: pokemonapptari
+    spec:
+      containers:
+      - name: pokemonapptari
+        image: enofitriyanti11/pokemonapptari:16
+        ports:
+        - containerPort: 3000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pokemonapptari-service
+  namespace: development
+spec:
+  selector:
+    app: pokemonapptari
+  type: LoadBalancer
+  ports:
+    - name: http
+      port: 80
+      targetPort: 3000
+      protocol: TCP
