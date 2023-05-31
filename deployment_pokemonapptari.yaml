@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: pokemonapptari
-        image: enofitriyanti11/pokemonapptari:$BUILD_NUMBER
+        image: enofitriyanti11/pokemonapptari:_TAG_
         ports:
         - containerPort: 3000
 ---
